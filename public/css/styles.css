@@ -482,6 +482,9 @@ select:-webkit-autofill:focus {
   background-color: #ea4c89;
 }
 
+.logout {
+  color: #d6d1d1;
+}
 .nav {
   background-repeat: no-repeat;
   background-size: cover;
@@ -512,6 +515,9 @@ h1:hover {
   transform: translate3d(0, -10px, 22px);
   color: #ff0266;
 }
+/* .smaller-title {
+  font-size: 1.5rem; /* ou outro tamanho menor que você preferir */
+} */
 h3.span {
   font-size: 2vw;
   letter-spacing: 0.7em;
@@ -671,7 +677,17 @@ td[colspan="2"] {
 }
 
 .back-button {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-    }
+  position: fixed;
+  top: 20px;
+  left: 20px;
+}
+
+.nav-destacado{
+  border-bottom: 3px solid #ffffff;
+  color: #ffffff !important;
+}
+
+.nav-destacado:hover{
+  background-color: #0e482a;
+  cursor: pointer;
+}

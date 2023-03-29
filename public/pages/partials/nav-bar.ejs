@@ -1,33 +1,50 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="/classificacao">Campeonato</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="#">Campeonato</a>
-
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-          <ul class="nav-item">
-            <a class="nav-link" href="/classificacao">Classificação</a>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link nav-destacado text-truncate" href="/classificacao">Classificação</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/roudeds">Rodadas</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link disabled" href="#">Seus Jogos</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/users">Usuários</a>
+              </li>
           </ul>
-
-          <ul class="nav-item">
-            <a class="nav-link" href="/roudeds">Rodadas</a>
-          </ul>
-
-          <ul class="nav-item">
-            <a class="nav-link disabled" href="#">Seus Jogos</a>
-          </ul>
-
-          <ul class="nav-item">
-            <a class="nav-link" href="/users">Usuários</a>
-          </ul>
-
-        </ul>
-
-        <button class="btn" type="submit" style="color: #d6d1d1;"><a class="nav-link" href="/logout">Logout <i class="fa-solid fa-right-from-bracket fa-fade" style="color: #d6d1d1;"></i></a></button>
-
+          <form class="d-flex">
+              <button class="btn" type="submit" style="color: #d6d1d1;"><a class="logout" href="/logout">Logout <i class="fa-solid fa-right-from-bracket fa-fade" style="color: #d6d1d1;"></i></a></button>
+          </form>
       </div>
-    </div>
+  </div>
 </nav>
+
+
+
+<script>
+  // seleciona todos os links de navegação
+const navLinks = document.querySelectorAll('.nav-link');
+
+// adiciona um ouvinte de eventos de clique em cada link
+navLinks.forEach(link => {
+  link.addEventListener('click', function(event) {
+    event.preventDefault(); // previne o comportamento padrão do link
+
+    // remove a classe "nav-destacado" de todos os links
+    navLinks.forEach(link => {
+      link.classList.remove('nav-destacado');
+    });
+
+    // adiciona a classe "nav-destacado" ao link clicado
+    this.classList.add('nav-destacado');
+  });
+});
+
+</script>
