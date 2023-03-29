@@ -1,0 +1,112 @@
+<%- include ('./partials/header.ejs'); -%>
+
+  <body id="body-pag-inicial">
+    <a href="#" class="back-button" onclick="history.go(-1); return false;"><i class="fa-sharp fa-solid fa-arrow-left fa-fade fa-2xl" style="color: #000000;"></i></a>
+    <section class="pageCreateusers">
+        <div class="form-create">
+
+            <div class="form-floating">
+
+                <form id="formCreate" class="formCreate" action="" autocomplete='off'>
+                    <h2 class="title-crateAccount">Create Account</h2>
+                    
+                    <div class="inputbox">
+                        <ion-icon id="iconUser" name="person-outline"></ion-icon>
+                        <input id="creatingUsername" type="text" autocomplete="off" required>
+                        <label for="creatingUsername">Usuário</label>
+                    </div>
+                      
+                    <div class="inputbox">
+                        <ion-icon id="iconEmail" name="mail-outline"></ion-icon>
+                        <input id="creatingEmail" type="email" autocomplete="email" required>
+                        <label for="creatingEmail">Email</label>
+                    </div>
+
+                    <div class="inputbox">
+                        <ion-icon id="iconPassword" name="lock-closed-outline"></ion-icon>
+                        <label for="">Password</label>
+                        <input id="creatingPassword" type="password" required>
+                        <ion-icon id="iconEyePassword" name="eye-outline"></ion-icon>
+                    </div>
+                      
+                    <div class="inputbox">
+                        <ion-icon id="iconPassword" name="lock-closed-outline"></ion-icon>
+                        <label for="">Repeat Password</label>
+                        <input id="creatingRepeatPassword" type="password" required>
+                        <ion-icon id="iconEyeRepeatPassword" name="eye-outline"></ion-icon>
+                    </div>
+<!--                     <form class="was-validated">
+                        <div class="mb-3">
+                            <select class="form-select" required aria-label="select example">
+                            <option value="">Choose your team</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                            </select>
+                            <div class="invalid-feedback">Example invalid select feedback</div>
+                        </div>
+                    </form> -->
+                    <button class="btn-signUp" type="button" onclick="{signUp}" id="btn_signUp">SignUp</button>
+
+                    <div id="returnErrorsScreenCreateUsers" class="returnErrorsScreenCreateUsers"></div>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+
+        const iconEyePassword = document.querySelector('#iconEyePassword');
+        const creatingPassword = document.querySelector('#creatingPassword');
+        
+        const iconEyeRepeatPassword = document.querySelector('#iconEyeRepeatPassword');
+        const creatingRepeatPassword = document.querySelector('#creatingRepeatPassword');
+        
+        iconEyePassword.addEventListener('click', togglePasswordVisibility);
+        iconEyeRepeatPassword.addEventListener('click', togglePasswordVisibility);
+        
+        function togglePasswordVisibility(event) {
+            const icon = event.target;
+            const inputField = icon.previousElementSibling;
+            const inputType = inputField.getAttribute('type');
+            const newInputType = inputType === 'password' ? 'text' : 'password';
+            inputField.setAttribute('type', newInputType);
+            icon.name = newInputType === 'password' ? 'eye-outline' : 'eye-off-outline';
+        }
+
+        window.onload = function() {
+        document.getElementById('creatingUsername').value = '';
+        };
+
+        const labelInputName = document.querySelector('#creatingUsername');
+        const returnErrorName = document.querySelector('#returnErrorsScreenCreateUsers');
+        labelInputName.addEventListener('click', function() {
+            returnErrorName.innerHTML = '';
+        });
+
+        const labelInputEmail = document.querySelector('#creatingEmail');
+        const returnErrorEmail = document.querySelector('#returnErrorsScreenCreateUsers');
+        labelInputEmail.addEventListener('click', function() {
+            returnErrorEmail.innerHTML = '';
+        });
+
+        const labelInputPassword = document.querySelector('#creatingPassword');
+        const returnErrorPassword = document.querySelector('#returnErrorsScreenCreateUsers');
+        labelInputPassword.addEventListener('click', function() {
+            returnErrorPassword.innerHTML = '';
+        });
+
+        const labelInputRepeatPassword = document.querySelector('#creatingRepeatPassword');
+        const returnErrorRepeatPassword = document.querySelector('#returnErrorsScreenCreateUsers');
+        labelInputPassword.addEventListener('click', function() {
+            returnErrorPassword.innerHTML = '';
+        });
+
+    </script>
+    <script src="../js/creatingUsers.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </body>
+
+  <%- include ('./partials/footer.ejs'); -%>

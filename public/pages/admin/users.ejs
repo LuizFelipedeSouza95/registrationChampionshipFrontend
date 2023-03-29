@@ -1,0 +1,26 @@
+<%- include ('../partials/header.ejs'); -%>
+<%- include ('../partials/nav-bar.ejs'); -%>
+
+  <div class="container-main">
+    <div class="container">
+      <hr />
+      <h2 id="userTable" class="title-users text-center">Usuários</h2>
+      <!-- <a class="btn btn-success" href="/admin/users/create">Criar novo usuário</a> -->
+      <hr />
+      <table class="table table-bordered">
+        <thead class="table-dark text-center">
+          <tr>
+            <th>Id</th>
+            <th>User</th>
+            <th>Email</th>
+            <th>CreatedAt</th>
+          </tr>
+        </thead>
+        <tbody id="userList"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="../../js/searchAllUsers.js"></script>
+
+<%- include ('../partials/footer.ejs'); -%>

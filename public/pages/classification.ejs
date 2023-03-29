@@ -1,0 +1,78 @@
+<%- include ('./partials/header.ejs'); -%>
+<%- include ('./partials/nav-bar.ejs'); -%>
+
+<body>
+
+  <div class="container-main">
+    <div class="container">
+      <hr />
+      <h2 id="classificationTable" class="title-classification text-center">Classificação</h2>
+      <hr />
+      <div class="table-responsive">
+        <table class="table table-bordered" id="tableClassification">
+          <thead class="table-dark text-center">
+            <tr>
+              <th class="text-center">Time</th>
+              <th class="text-center">Jogador</th>
+              <th class="text-center">P</th>
+              <th class="text-center">V</th>
+              <th class="text-center">E</th>
+              <th class="text-center">D</th>
+              <th class="text-center">GP</th>
+              <th class="text-center">GC</th>
+              <th class="text-center">SG</th>
+            </tr>
+          </thead>
+          <tbody id="classificationList" class="text-center"></tbody>
+        </table>
+      </div>
+    </div>
+    <%- include ('./partials/footer.ejs'); -%>
+  </div>
+
+</body>
+
+<script src="../js/classification.js"></script>
+<!-- <script>
+  window.onload = function() {
+    const table = document.getElementById("tableClassification");
+    const rows = table.querySelectorAll("tbody tr");
+    const data = [];
+
+    rows.forEach((row, index) => {
+      const columns = row.querySelectorAll("td");
+      const p = parseInt(columns[2].textContent);
+      const v = parseInt(columns[3].textContent);
+      const sg = parseInt(columns[8].textContent);
+
+      data.push({
+        row,
+        index,
+        p,
+        v,
+        sg
+      });
+    });
+
+    data.sort((a, b) => {
+      if (a.p !== b.p) {
+        return b.p - a.p;
+      }
+      if (a.v !== b.v) {
+        return b.v - a.v;
+      }
+      return b.sg - a.sg;
+    });
+
+    const tbody = table.querySelector("tbody");
+
+    setTimeout(function () {
+        data.forEach((item) => {
+        tbody.appendChild(item.row);
+       });
+    }, 800);
+
+  };
+  
+</script> -->
+</html>

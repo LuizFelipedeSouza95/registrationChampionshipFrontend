@@ -1,0 +1,73 @@
+<%- include ('./partials/header.ejs'); -%>
+
+<body>
+    <a href="#" class="back-button" onclick="history.go(-1); return false;"><i class="fa-sharp fa-solid fa-arrow-left fa-fade fa-2xl" style="color: #000000;"></i></a>
+    <section class="pageLogin">
+        <div class="form-box">
+
+            <div class="form-floating">
+
+                <form id="formLogin" class="formLogin" action="/authenticate" autocomplete='false'>
+                    <h2 class="title-login">Login</h2>
+
+                    <div class="inputbox">
+                        <ion-icon id="iconEmail" name="mail-outline"></ion-icon>
+                        <input id="emailLogin" type="email" autocomplete="email" required>
+                        <label for="creatingEmail">Email</label>
+                    </div>
+
+                    <div class="inputbox">
+                        <ion-icon id="iconPassword" name="lock-closed-outline"></ion-icon>
+                        <label for="">Password</label>
+                        <input id="passwordLogin" type="password" required>
+                        <ion-icon id="iconEyePassword" name="eye-outline"></ion-icon>
+                    </div>
+
+                    <div class="forget">
+                        <label for=""><input type="checkbox">Remember Me  <a href="/forgetPassword">Forget Password</a></label>
+                    </div>
+
+                    <button class="buttonLogin" type="button" onclick="{signIn}" id="btn_signIn">SignIn</button>
+
+                    <div class="register">
+                        <p>Don't have a account  <a href="/create-account">Register</a></p>
+                        <br>
+                        <div id="returnErrorsLogin" class="returnErrorsLogin"></div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+    <script>
+
+        const iconEyePassword = document.querySelector('#iconEyePassword');
+        const loginPassword = document.querySelector('#loginPassword');
+
+        iconEyePassword.addEventListener('click', togglePasswordVisibility);
+
+        function togglePasswordVisibility(event) {
+            const icon = event.target;
+            const inputField = icon.previousElementSibling;
+            const inputType = inputField.getAttribute('type');
+            const newInputType = inputType === 'password' ? 'text' : 'password';
+            inputField.setAttribute('type', newInputType);
+            icon.name = newInputType === 'password' ? 'eye-outline' : 'eye-off-outline';
+        }
+
+        const labelInputEmail = document.querySelector('#emailLogin');
+        const returnErrorEmail = document.querySelector('#returnErrorsLogin');
+        labelInputEmail.addEventListener('click', function() {
+            returnErrorEmail.innerHTML = '';
+        });
+
+        const labelInputPassword = document.querySelector('#passwordLogin');
+        const returnErrorPassword = document.querySelector('#returnErrorsLogin');
+        labelInputPassword.addEventListener('click', function() {
+            returnErrorPassword.innerHTML = '';
+        });
+    </script>
+    <script src="../js/login.js"></script>
+</body>
+
+<!-- <%- include ('./partials/footer.ejs'); -%> -->

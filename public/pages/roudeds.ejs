@@ -1,0 +1,33 @@
+<%- include ('./partials/header.ejs'); -%>
+<%- include ('./partials/nav-bar.ejs'); -%>
+
+<body>
+
+  <div class="container-main">
+    <div class="container">
+      <hr />
+      <h2 id="roudedsTable" class="title-roudedsTable text-center">Rodadas</h2>
+      <hr />
+      <div class="table-responsive">
+        <table class="table table-bordered text-center">
+          <thead class="table-dark text-center">
+            <tr>
+              <th>Rodada</th>
+              <th>Time Mandante</th>
+              <th>Placar Mandante</th>
+              <th>X</th>
+              <th>Placar Visitante</th>
+              <th>Time Visitante</th>
+              <th>Acão</th>
+            </tr>
+          </thead>
+          <tbody id="roudedList"></tbody>
+        </table>
+      </div>
+    </div>
+    <%- include ('./partials/footer.ejs'); -%>
+  </div>
+
+</body>
+<script src="../js/listRouded.js"></script>
+</html>
