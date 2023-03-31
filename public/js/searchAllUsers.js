@@ -8,8 +8,8 @@ async function searchAllUsers() {
 
     const row = userTable.insertRow();
 
-    const idCell = row.insertCell();
-    idCell.innerText = user.id;
+    /* const idCell = row.insertCell();
+    idCell.innerText = user.id; */
 
     const nameCell = row.insertCell();
     nameCell.innerText = user.name;

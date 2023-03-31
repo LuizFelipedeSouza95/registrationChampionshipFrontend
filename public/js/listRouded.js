@@ -6,11 +6,12 @@ async function searchAllRouded() {
   const roudedCount = {};
   let rowspan = 1;
 
+  console.log(roudeds);
   roudeds.forEach((rouded, index) => {
-    if (roudedCount[rouded.rouded] === undefined) {
-      roudedCount[rouded.rouded] = 1;
+    if (roudedCount[rouded.roundNumber] === undefined) {
+      roudedCount[rouded.roundNumber] = 1;
     } else {
-      roudedCount[rouded.rouded]++;
+      roudedCount[rouded.roundNumber]++;
     }
     const row = userTable.insertRow();
 
@@ -18,11 +19,11 @@ async function searchAllRouded() {
     roudedCell.style.textAlign = "center";
     roudedCell.style.verticalAlign = "middle";
     if (roudedCount[rouded.rouded] > 1) {
-      roudedCell.innerText = rouded.rouded;
+      roudedCell.innerText = rouded.roundNumber;
       roudedCell.style.color = "transparent";
-      roudedCount[rouded.rouded]--;
+      roudedCount[rouded.roundNumber]--;
     } else {
-      roudedCell.innerText = rouded.rouded;
+      roudedCell.innerText = rouded.roundNumber;
     }
 
     const homePlayerCell = row.insertCell();
@@ -50,7 +51,7 @@ async function searchAllRouded() {
     scoreVisitingCell.appendChild(inputscoreVisiting);
 
     const visitingPlayerCell = row.insertCell();
-    visitingPlayerCell.innerText = rouded.visitingPlayer;
+    visitingPlayerCell.innerText = rouded.visitingPlayers;
 
     const btnCell = row.insertCell();
     const saveButton = document.createElement("button");
@@ -86,10 +87,6 @@ async function searchAllRouded() {
       const scoreVisiting = parseInt(scoreVisitingInput ? scoreVisitingInput.value : "");
 
       const roudeds = parseInt(rouded)
-
-      /*       console.log(
-        `Jogo entre ${homePlayer} ${scoreHome} x ${scoreVisiting} ${visitingPlayer} na Rodada: ${rouded}`
-      ); */
 
       const response = await fetch(`http://localhost:3000/updatedTableRouded`, {
         method: "POST",

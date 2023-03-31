@@ -8,10 +8,10 @@ async function searchAllUsers() {
     const row = userTable.insertRow();
 
     const timeCell = row.insertCell();
-    timeCell.innerText = user.time;
+    timeCell.innerText = user.team;
 
     const jogadorCell = row.insertCell();
-    jogadorCell.innerText = user.jogador;
+    jogadorCell.innerText = user.player;
 
     const pCell = row.insertCell();
     pCell.innerText = user.P;

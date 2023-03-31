@@ -44,8 +44,10 @@ app.get("/home", function (req, res) {
   res.render("./pages/home.ejs");
 });
 
-app.get("/roudeds", getUser, async function (req, res) {
-  res.render("./pages/roudeds.ejs");
+app.get("/rounds", getUser, async function (req, res) {
+  req.session.user = undefined;
+  console.log(req.session.user);
+  res.render("./pages/rounds.ejs");
 });
 
 app.get("/classificacao", getUser, function (req, res) {
@@ -95,12 +97,15 @@ app.post("/authenticate", getUserAuthenticate, async function (req, res) {
       }) */
 
       req.session.user = {
-        id: user[0].id,
         name: user[0].name,
         email: user[0].email,
         admin: user[0].admin,
       };
-
+/*       console.log({
+        name: user[0].name,
+        email: user[0].email,
+        admin: user[0].admin,
+      }); */
       res.json(req.session.user);
     } else {
       res.json({ password: false });
