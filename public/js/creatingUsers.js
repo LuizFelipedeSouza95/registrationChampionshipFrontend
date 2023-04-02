@@ -2,10 +2,17 @@ async function signUp() {
   const name = document.getElementById("creatingUsername").value;
   const email = document.getElementById("creatingEmail").value;
   const password = document.getElementById("creatingPassword").value;
-  const repeatPassword = document.getElementById("creatingRepeatPassword").value;
+  const repeatPassword = document.getElementById(
+    "creatingRepeatPassword"
+  ).value;
+  const option = document.getElementById("form-select");
+  const selectedIdValue = option.value;
+  const selectedTextValue = option.options[option.selectedIndex];
+  const selectedTextTeam = selectedTextValue.text;
 
   const validate = { email, password };
-  let regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z{}[\],$^?~=+\-_*\-+.|@]{6,}$/;
+  let regexPassword =
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z{}[\],$^?~=+\-_*\-+.|@]{6,}$/;
   let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const validationEmail = regexEmail.test(validate.email);
@@ -17,7 +24,6 @@ async function signUp() {
     password: false,
     repeatPassword: false,
   };
-
 
   function hasErrors() {
     return Object.values(errors).some((error) => error === true);
@@ -81,8 +87,8 @@ async function signUp() {
     return;
   } else {
     try {
+      const teamId = parseInt(selectedIdValue);
 
-      
       const response = await fetch(`http://localhost:3000/createUser`, {
         method: "POST",
         headers: {
@@ -93,12 +99,16 @@ async function signUp() {
           name,
           email,
           password,
+          team: teamId,
           admin: false
         }),
       });
-
-      if (response.status === 409) {
+      const results = await response.json();
+0
+      if (results.message === "Email Already exists!") {
         setError("email", "Email Already exists!");
+      } else if (results.message === "Username already exists!") {
+        setError("name", "Username already exists!");
       } else {
         if (name && email && password && repeatPassword) {
           name.value = "";

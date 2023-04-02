@@ -1,5 +1,9 @@
 <%- include ('./partials/header.ejs'); -%>
 
+<link rel="stylesheet" href="../css/styles.css">
+
+</head>
+
   <body id="body-pag-inicial">
     <a href="#" class="back-button" onclick="history.go(-1); return false;"><i class="fa-sharp fa-solid fa-arrow-left fa-fade fa-2xl" style="color: #000000;"></i></a>
     <section class="pageCreateusers">
@@ -10,6 +14,10 @@
                 <form id="formCreate" class="formCreate" action="" autocomplete='off'>
                     <h2 class="title-crateAccount">Create Account</h2>
                     
+                    <select class="form-select my-select" id="form-select" required>
+                        <option selected desabled>Select a team</option>
+                    </select>
+
                     <div class="inputbox">
                         <ion-icon id="iconUser" name="person-outline"></ion-icon>
                         <input id="creatingUsername" type="text" autocomplete="off" required>
@@ -46,7 +54,6 @@
     </section>
     
     <script>
-
         const iconEyePassword = document.querySelector('#iconEyePassword');
         const creatingPassword = document.querySelector('#creatingPassword');
         
@@ -94,9 +101,19 @@
         });
 
     </script>
+
     <script src="../js/creatingUsers.js"></script>
+    <script src="../js/listTeams.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-  <%- include ('./partials/footer.ejs'); -%>
+    <script>
+        $(document).ready(function() {
+            $('.form-select').select2();
+        });
+    </script>
+
+  </body>

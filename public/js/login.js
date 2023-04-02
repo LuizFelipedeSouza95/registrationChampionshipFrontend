@@ -57,9 +57,10 @@ async function signIn() {
       setError("password", "Incorrect password");
     } else {
       try {
-        setTimeout(function () {
-          window.location.href = `/classificacao`;///${result.name}
-        }, 1000);
+        window.location.href = `/classificacao`;
+        /* setTimeout(function () {
+          window.location.href = `/classificacao`;
+        }, 1000); */
       } catch (error) {
         console.log(error);
         return error;

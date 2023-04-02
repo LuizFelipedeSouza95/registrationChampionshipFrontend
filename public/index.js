@@ -45,8 +45,6 @@ app.get("/home", function (req, res) {
 });
 
 app.get("/rounds", getUser, async function (req, res) {
-  req.session.user = undefined;
-  console.log(req.session.user);
   res.render("./pages/rounds.ejs");
 });
 
@@ -60,7 +58,7 @@ app.get("/create-account", function (req, res) {
 });
 
 app.get("/logout", function (req, res) {
-  req.session.user = undefined;
+  req.session.destroy();
   res.redirect("/home");
 });
 

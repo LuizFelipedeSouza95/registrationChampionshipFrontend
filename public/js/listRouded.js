@@ -103,7 +103,7 @@ async function searchAllRouded() {
       });
     
       const result = await response.json();
-      location.reload();
+      window.location.href = `/rounds`;
       
     }
 

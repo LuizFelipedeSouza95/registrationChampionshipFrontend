@@ -6,10 +6,9 @@ async function searchAllUsers() {
 
   users.forEach((user) => {
 
+    const adminUser = user.admin ? "Sim" : "Não";
+    
     const row = userTable.insertRow();
-
-    /* const idCell = row.insertCell();
-    idCell.innerText = user.id; */
 
     const nameCell = row.insertCell();
     nameCell.innerText = user.name;
@@ -17,11 +16,15 @@ async function searchAllUsers() {
     const emailCell = row.insertCell();
     emailCell.innerText = user.email;
 
+    const teamtCell = row.insertCell();
+    teamtCell.innerText = user.team
+
+    const admintCell = row.insertCell();
+    admintCell.innerText = adminUser
+
     const createdAtCell = row.insertCell();
     createdAtCell.innerText = user.createdAt;
 
-/*     const passwordCell = row.insertCell();
-    passwordCell.innerText = user.password; */
   });
   return users;
 }

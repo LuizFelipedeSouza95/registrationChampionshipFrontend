@@ -8,10 +8,10 @@ async function searchAllUsers() {
     const row = userTable.insertRow();
 
     const timeCell = row.insertCell();
-    timeCell.innerText = user.team;
+    timeCell.innerText = user.teamPlayer;
 
     const jogadorCell = row.insertCell();
-    jogadorCell.innerText = user.player;
+    jogadorCell.innerText = user.name;
 
     const pCell = row.insertCell();
     pCell.innerText = user.P;
@@ -37,6 +37,7 @@ async function searchAllUsers() {
   });
   
   return users;
+  
 }
 
 searchAllUsers();

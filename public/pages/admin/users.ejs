@@ -1,4 +1,8 @@
 <%- include ('../partials/header.ejs'); -%>
+
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/footer.css">
+</head>
 <%- include ('../partials/nav-bar.ejs'); -%>
 
   <div class="container-main">
@@ -13,14 +17,15 @@
             <!-- <th>Id</th> -->
             <th>User</th>
             <th>Email</th>
+            <th>Team</th>
+            <th>Admin?</th>
             <th>CreatedAt</th>
           </tr>
         </thead>
         <tbody id="userList"></tbody>
       </table>
     </div>
+    <% include ('../partials/footer.ejs'); %>
   </div>
 
   <script src="../../js/searchAllUsers.js"></script>
-
-<%- include ('../partials/footer.ejs'); -%>

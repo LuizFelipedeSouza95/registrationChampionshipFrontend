@@ -1,4 +1,8 @@
 <%- include ('./partials/header.ejs'); -%>
+
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/footer.css">
+</head>
 <%- include ('./partials/nav-bar.ejs'); -%>
 
 <body>
@@ -13,11 +17,11 @@
           <thead class="table-dark text-center">
             <tr>
               <th>Rodada</th>
-              <th>Time Mandante</th>
+              <th>Player Mandante</th>
               <th>Placar Mandante</th>
               <th>X</th>
               <th>Placar Visitante</th>
-              <th>Time Visitante</th>
+              <th>Player Visitante</th>
               <th>Acão</th>
             </tr>
           </thead>
@@ -25,7 +29,7 @@
         </table>
       </div>
     </div>
-    <%- include ('./partials/footer.ejs'); -%>
+    <% include ('./partials/footer.ejs'); %>
   </div>
 
 </body>
