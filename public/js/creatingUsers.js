@@ -2,17 +2,14 @@ async function signUp() {
   const name = document.getElementById("creatingUsername").value;
   const email = document.getElementById("creatingEmail").value;
   const password = document.getElementById("creatingPassword").value;
-  const repeatPassword = document.getElementById(
-    "creatingRepeatPassword"
-  ).value;
+  const repeatPassword = document.getElementById("creatingRepeatPassword").value;
   const option = document.getElementById("form-select");
   const selectedIdValue = option.value;
   const selectedTextValue = option.options[option.selectedIndex];
   const selectedTextTeam = selectedTextValue.text;
 
   const validate = { email, password };
-  let regexPassword =
-    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z{}[\],$^?~=+\-_*\-+.|@]{6,}$/;
+  let regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z{}[\],$^?~=+\-_*\-+.|@]{6,}$/;
   let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const validationEmail = regexEmail.test(validate.email);

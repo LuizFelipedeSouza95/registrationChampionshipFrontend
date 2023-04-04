@@ -6,7 +6,7 @@ const app = express();
 const path = require("path");
 const adminAuth = require("../middlewares/adminAlth");
 const getUser = require("../middlewares/getUser");
-const getUserAuthenticate = require("../middlewares/getUserAuthenticate")
+const getUserAuthenticate = require("../middlewares/getUserAuthenticate");
 const bcrypt = require("bcrypt");
 //const jwt = require("jsonwebtoken");
 //const jwtSecret = "jhgcdfjyhgcvjhgdjghvfckjhgfdkhgcmjhgfjkhdckhg";
@@ -53,6 +53,11 @@ app.get("/classificacao", getUser, function (req, res) {
   res.render("./pages/classification.ejs", { user: user });
 });
 
+app.get("/yourGames", getUser, function (req, res) {
+  const user = req.session.user;
+  res.render("./pages/yourGames.ejs", { user: user });
+});
+
 app.get("/create-account", function (req, res) {
   res.render("./pages/createAccount.ejs");
 });
@@ -66,44 +71,24 @@ app.post("/authenticate", getUserAuthenticate, async function (req, res) {
   const email = req.query.email;
   const password = req.query.password;
 
-  const user = res.locals.users
+  const user = res.locals.users;
 
-  if (user[0] === undefined) {
+  const getUserByEmail = user.filter((user) => {
+    const userByEmail = user.email === email;
+    return userByEmail;
+  });
+
+  if (user === undefined) {
     res.json({ email: false });
   } else {
-    const correct = bcrypt.compareSync(password, user[0].password);
+    const correct = bcrypt.compareSync(password, getUserByEmail[0].password);
     if (correct) {
-
-      /*       jwt.sign({
-        id: user[0].id,
-        name: user[0].name,
-        email: user[0].email,
-        admin: user[0].admin
-      }, jwtSecret,{expiresIn: '24h'},(err, token) => {
-        if(err){
-          res.status(400);
-          res.json({err: "fail Internal"})
-        }else{
-          res.status(200);
-          res.json({
-            token: token
-          })
-          console.log({
-            token: token
-          });
-        }
-      }) */
-
       req.session.user = {
-        name: user[0].name,
-        email: user[0].email,
-        admin: user[0].admin,
+        name: getUserByEmail[0].name,
+        email: getUserByEmail[0].email,
+        admin: getUserByEmail[0].admin,
       };
-/*       console.log({
-        name: user[0].name,
-        email: user[0].email,
-        admin: user[0].admin,
-      }); */
+
       res.json(req.session.user);
     } else {
       res.json({ password: false });

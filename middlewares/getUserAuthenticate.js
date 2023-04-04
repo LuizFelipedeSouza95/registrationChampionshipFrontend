@@ -5,3 +5,4 @@ async function getUserAuthenticate(req, res, next) {
   return next();
 }
 module.exports = getUserAuthenticate;
+
